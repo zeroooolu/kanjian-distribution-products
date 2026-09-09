@@ -1,5 +1,5 @@
-const CMS_BASE='https://img.cms.kanjian.com/frontpage/v5/home/release/dsps/';
-const RAW='https://raw.githubusercontent.com/zeroooolu/music-promotion/main/frontend/star-release/assets/platform-logos/';
+const CMS_BASE='/assets/dsps/';
+const RAW='/assets/platform-logos/';
 const namedLogos={
   'Spotify':RAW+'spotify.jpeg','Apple Music':RAW+'apple-music.jpg','QQ音乐':RAW+'qq-music.png','网易云音乐':RAW+'netease-music.jpg','酷狗音乐':RAW+'kugou-music.png','酷我音乐':RAW+'kuwo-music.png','汽水音乐':RAW+'douyin-qishui.jpg','华为音乐':RAW+'huawei-music.jpg','Amazon Music':RAW+'amazon-music.png','YouTube Music':RAW+'youtube-music.jpg','TikTok':RAW+'tiktok.jpeg','KKBOX':RAW+'kkbox.png','JOOX':RAW+'joox.png'
 };
