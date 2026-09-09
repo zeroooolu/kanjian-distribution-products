@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/04-self-service-distribution/prototype-v1/index.html" },
+    { "source": "/pricing", "destination": "/04-self-service-distribution/prototype-v1/pricing.html" },
+    { "source": "/pricing.html", "destination": "/04-self-service-distribution/prototype-v1/pricing.html" },
+    { "source": "/release", "destination": "/04-self-service-distribution/prototype-v1/release.html" },
+    { "source": "/release.html", "destination": "/04-self-service-distribution/prototype-v1/release.html" }
+  ]
+}
