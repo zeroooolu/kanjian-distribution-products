@@ -2,6 +2,23 @@ module.exports = async function handler(req, res) {
   const presetId = '2097207849833730048';
   const base = 'https://gw.kanjian.com/contract/api/v1';
   try {
+    if (req.query && req.query.debug === 'tenant') {
+      const src = await (await fetch('https://star.kanjian.com/preset/assets/index-91615d64.js')).text();
+      const needles = ['tenant_key','tenantKey','TenantKey','x-tenant','tenant-key'];
+      const matches = [];
+      for (const needle of needles) {
+        let idx = src.indexOf(needle);
+        let count = 0;
+        while (idx >= 0 && count < 12) {
+          matches.push({ needle, context: src.slice(Math.max(0, idx - 280), Math.min(src.length, idx + 420)) });
+          idx = src.indexOf(needle, idx + needle.length);
+          count++;
+        }
+      }
+      res.status(200).json({ matches });
+      return;
+    }
+
     const labelResp = await fetch(`${base}/preset/sharing/${presetId}/preset-label`, {
       headers: { accept: 'application/json' }
     });
@@ -15,17 +32,10 @@ module.exports = async function handler(req, res) {
     const labelData = label && label.data !== undefined ? label.data : label;
     const allDsp = !!(labelData && labelData.allDsp);
     const tId = allDsp ? '1' : '2';
-
-    const body = {
-      dspName: '',
-      areaIds: [],
-      presetId,
-      tId
-    };
+    const body = { dspName: '', areaIds: [], presetId, tId };
+    const headers = { 'content-type': 'application/json', accept: 'application/json' };
     const dspResp = await fetch(`${base}/preset/sharing/allOrPersonalization/dsps-info`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', accept: 'application/json' },
-      body: JSON.stringify(body)
+      method: 'POST', headers, body: JSON.stringify(body)
     });
     const dspText = await dspResp.text();
     if (!dspResp.ok) {
