@@ -54,7 +54,8 @@ const channelData=[
 ];
 
 function imageMarkup(name){
-  const url=namedLogos[name];
+  const extracted=window.STAR_DSP_LOGOS&&window.STAR_DSP_LOGOS[name];
+  const url=extracted||namedLogos[name];
   return url?`<img src="${url}" alt="${name}" loading="lazy">`:`<span class="logo-wordmark">${name}</span>`;
 }
 
@@ -194,7 +195,21 @@ function initReleaseBuilder(){
   render();
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
+function loadStarLogoBundle(){
+  if(window.STAR_DSP_LOGOS)return Promise.resolve();
+  if(!document.querySelector('[data-dsp-marquee],[data-release-builder]'))return Promise.resolve();
+  return new Promise(resolve=>{
+    const script=document.createElement('script');
+    script.src='/api/dsp-logos.js';
+    script.async=true;
+    script.onload=resolve;
+    script.onerror=resolve;
+    document.head.appendChild(script);
+  });
+}
+
+document.addEventListener('DOMContentLoaded',async()=>{
+  await loadStarLogoBundle();
   buildMarquee();
   hydrateNamedLogos();
   initBilling();
