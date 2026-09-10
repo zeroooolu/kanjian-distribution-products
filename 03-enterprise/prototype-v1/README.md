@@ -1,150 +1,177 @@
-# 星球发行·企业版官网原型 v2.0
+# 星球发行·企业版官网原型 v2.1
 
 > 日期：2026-09-10  
 > 状态：Enterprise Commercial Website / Product Demo Scaffold
 
 ## 本轮目标
 
-企业版不再以“再设计一套发行后台”为目标，而是围绕已经存在的 Tenant、企业后台、下游 CP 门户、发行、DSP、报表、分账和提现能力，搭建完整的企业商业产品链路。
+v2.1 不再增加产品范围，重点将 v2.0 偏产品架构、技术说明式的文案，统一改写为面向国内企业采购与业务负责人的官网语言。
 
-本轮依据：
+核心原则：
 
-- `03-enterprise/product-scope-and-commercial-loop-v1.0.md`
-- `03-enterprise/business-baseline-v0.1.md`
-- `03-enterprise/commercial-model-v0.1.md`
-- `06-research/enterprise-white-label-api-competitor-research-2026.md`
-- `SAAS0102(2).pdf` 中已有音乐资产、发行、分账、合规和 API 能力介绍
-- AudioSalad、FUGA、SonoSuite、LabelGrid、Revelator、EVEARA 当前企业产品官网结构
+> **少讲系统如何构成，多讲企业能够开展什么业务。**
+
+官网围绕五个核心信息展开：
+
+1. 快速建立企业品牌下的音乐发行服务；
+2. 连接中国及全球主流音乐平台；
+3. 从内容管理、发行到报表和收益，在一套系统中完成；
+4. 已有产品可通过 API 接入发行能力；
+5. 看见音乐负责发行审核、平台交付和后续服务。
 
 ## 产品结构
 
 对外正式保留两个核心商业产品：
 
-1. **品牌发行平台**：以企业品牌、独立域名和客户体系运营完整发行服务；
-2. **发行 API**：将内容、发行、渠道、报表与收益能力接入现有产品。
+1. **品牌发行平台**：以企业品牌和独立入口运营完整发行服务；
+2. **发行 API**：将内容、发行、渠道、数据与收益能力接入现有产品。
 
-DDEX / XML / Excel / SFTP 不再作为第三个产品，统一归入企业技术接入与交付能力。
+DDEX / XML / Excel / SFTP 统一作为技术接入与交付方式，不作为第三个产品。
 
 ## 顶层导航
 
-继续遵循三主菜单：
+严格保留三个一级菜单：
 
 ```text
 产品
-├── 产品总览
-└── 解决方案
-
 定价
-
 API
-├── 发行 API
-└── 开发者中心
 ```
 
-右侧提供：
+右侧只保留核心 CTA：
 
-- 开发者中心快捷入口；
-- 申请企业版。
+```text
+申请企业版
+```
+
+解决方案放在产品体系内部；开发者中心从 API 页面进入，不再额外占用顶层导航。
 
 ## 当前页面 / 路由
 
 - `/enterprise`：企业版首页
-- `/enterprise/product`：产品总览 / 品牌发行平台 / API 能力
-- `/enterprise/solutions`：发行商、版权公司、AI 音乐平台、音乐科技平台解决方案
+- `/enterprise/product`：产品总览
+- `/enterprise/solutions`：解决方案
 - `/enterprise/pricing`：年度合作 + 按量合作
 - `/enterprise/api`：发行 API 产品页
-- `/enterprise/developers`：Developer Center 信息架构 Demo
-- `/enterprise/apply`：企业申请与入驻流程 Demo
+- `/enterprise/developers`：开发者中心
+- `/enterprise/apply`：企业申请
 
-当前使用同一 HTML 根据 clean route 渲染不同页面，方便在产品设计阶段快速迭代；后续研发实现时可拆为真实路由和组件。
-
-## 首页商业叙事
-
-首页已经从纯能力展示改成完整 B2B 商业链：
+## 首页信息顺序
 
 ```text
-产品定位
+Hero
+↓
+看见音乐与业务规模证明
 ↓
 品牌发行平台 / 发行 API
 ↓
-真实发行链路
-CP → 企业租户 → 看见审核 → DSP
+从内容提交到平台上线
 ↓
-已有发行能力证明
+管理内容 / 发行音乐 / 查看数据 / 管理收益
+↓
+品牌发行平台实际体验
 ↓
 全球发行网络
 ↓
-企业申请 / 评估 / 报价 / 签约 / 开通 / 上线
+API
+↓
+年度合作 / 按量合作
 ↓
 申请企业版
 ```
 
-## PPT 能力继承
+## 文案调整
 
-旧 SaaS 介绍中保留并重新产品化表达的能力：
+### Hero
 
-- 元数据与资产集中管理；
-- 多平台发行；
-- 报表解析与多维度版税分账；
-- 资产传输；
-- 合同 / 合规基础能力；
-- API 与多种企业交付方式。
+主标题：
 
-不沿用旧 PPT 的视觉样式和“音乐基建云服务平台”泛化定位。
+> 让企业快速拥有专属音乐发行平台。
 
-## 竞品结构参考
+副标题：
 
-- AudioSalad：服务能力短表达 + API / White Label 独立入口；
-- FUGA：Distribution 为主产品，Custom-branded distribution 与 API 作为企业扩展；
-- SonoSuite：面向 Distributor 的明确白标价值 + 业务规模申请表；
-- LabelGrid：One Engine / Two Ways In + Pricing + Developer Hub；
-- Revelator：White Label 与 API 独立产品页，API 覆盖供应链、数据和收益；
-- EVEARA：企业申请 / Onboarding 作为完整购买链的一部分。
+> 从内容管理、音乐发行到数据与收益，一套平台连接中国及全球主流音乐服务。支持品牌发行平台与 API 接入。
 
-## 定价策略
+### 品牌发行平台
 
-当前官网只公开商业模型，不公开未经重新审批的历史固定价格：
+核心表达：
 
-- 年度合作：年度平台服务 + 约定发行额度 + 超额使用；
-- 按量合作：按歌曲 × 渠道 × 实际传输计费。
+> 快速建立企业品牌下的完整音乐发行服务。
 
-历史 `¥25,000 / 年` 与 `约 ¥0.5 / 首 / 渠道 / 次` 继续作为内部商业模型基线。
+官网不再解释 White-label、Tenant、Control Plane 等内部概念。
 
-## Developer Center
+### 发行 API
 
-当前为结构 Demo，已包含：
+核心表达：
 
-- 快速开始；
-- 鉴权；
-- 内容 API；
-- 发行 API；
-- 基础数据；
-- Webhook；
-- 日志与错误码；
-- 用量与配额。
+> 把成熟的音乐发行能力接入现有产品。
 
-示例 Endpoint 仅用于说明 Developer Experience，不代表最终生产接口。下一阶段需要基于现有真实后台 API 完成 Endpoint Mapping。
+产品页负责解释能做什么，开发者中心负责解释如何接入。
 
-## 企业申请
+### 发行流程
 
-申请页已经包含：
+对外简化为：
 
-- 企业基本信息；
+```text
+提交内容
+→ 进入发行
+→ 发行审核
+→ 平台上线
+```
+
+不在营销页面使用 `CP → Tenant → KANJIAN → DSP` 这种架构图表达。
+
+### 核心能力
+
+从六类系统能力重新收敛为四个企业结果：
+
+- 管理内容；
+- 发行音乐；
+- 查看数据；
+- 管理收益。
+
+### 定价
+
+不使用技术计费公式作为主要视觉。
+
+- 年度合作：适合持续运营发行服务；
+- 按量合作：适合 API 和弹性发行需求。
+
+历史固定价格继续作为内部商业基线，不在官网直接公开。
+
+### 企业申请
+
+第一张申请表只收集业务判断真正需要的信息：
+
+- 企业名称；
+- 联系人；
+- 企业邮箱 / 手机；
 - 企业类型；
-- 品牌发行平台 / 发行 API 选择；
+- 官网 / 产品地址；
+- 期望方案；
 - 曲库规模；
 - 月发行量；
-- 下游 CP / 厂牌数量；
-- API / DDEX / XML / SFTP / Excel 技术需求；
-- 企业入驻流程。
+- 业务说明。
 
-当前表单为 Demo，不提交真实 Lead 数据。
+DDEX / XML / SFTP / Excel 等技术需求移出首张申请表，放到后续商务 / 技术评估阶段。
+
+## PPT 能力继承
+
+`SAAS0102(2).pdf` 中继续保留并重新产品化表达：
+
+- 元数据与音乐资产集中管理；
+- 一次录入、多平台发行；
+- 多平台报表与自动分账；
+- 收入到提现的收益链路；
+- 内容审核与合规能力；
+- API、DDEX、XML、Excel、SFTP 等企业交付方式。
+
+不沿用旧 PPT 的“音乐基建云服务平台”泛化定位和旧视觉表现。
 
 ## 下一步
 
-1. 根据真实 API 文档完成 Developer Center Endpoint Mapping；
-2. 将企业申请表接到 Enterprise Lead；
-3. 设计内部 Lead → Proposal → Contract → Provisioning 流程；
-4. 设计 Plan / Entitlement / Quota / Usage；
-5. 确认公开 Pricing 数字后完成定价页 v1.0；
-6. 用现有真实企业后台 / CP 门户截图替换部分示意界面。
+1. 基于现有真实 API 文档完成 Developer Center Endpoint Mapping；
+2. 企业申请接入 Enterprise Lead；
+3. 补齐 Lead → 方案报价 → 合同 → Tenant 开通的内部商业流程；
+4. 最终确认年度合作和按量合作的公开 Pricing；
+5. 逐步用真实企业后台与客户门户截图替换 Demo 示意界面。
