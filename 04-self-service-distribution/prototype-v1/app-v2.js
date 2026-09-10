@@ -1,13 +1,23 @@
-// Homepage visual layer is intentionally loaded only on the AI distribution landing page.
+// Homepage visual layers are intentionally loaded only on the AI distribution landing page.
 // Pricing and release builder keep their existing styling.
 (function loadHomeV4(){
   if(!document.body || !document.body.classList.contains('home-v3')) return;
-  if(document.querySelector('link[data-home-v4]')) return;
-  const link=document.createElement('link');
-  link.rel='stylesheet';
-  link.href='/04-self-service-distribution/prototype-v1/home-v4.css?v=20260909';
-  link.dataset.homeV4='1';
-  document.head.appendChild(link);
+
+  if(!document.querySelector('link[data-home-v4]')){
+    const base=document.createElement('link');
+    base.rel='stylesheet';
+    base.href='/04-self-service-distribution/prototype-v1/home-v4.css?v=20260910';
+    base.dataset.homeV4='1';
+    document.head.appendChild(base);
+  }
+
+  if(!document.querySelector('link[data-home-v4-fixes]')){
+    const fixes=document.createElement('link');
+    fixes.rel='stylesheet';
+    fixes.href='/04-self-service-distribution/prototype-v1/home-v4-fixes.css?v=20260910';
+    fixes.dataset.homeV4Fixes='1';
+    document.head.appendChild(fixes);
+  }
 })();
 
 const RAW='/assets/platform-logos/';
