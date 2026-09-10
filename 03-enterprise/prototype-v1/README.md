@@ -2,6 +2,7 @@
 
 > 日期：2026-09-10  
 > 状态：Enterprise Commercial Website / Product Demo
+> 部署触发：2026-09-10 retry
 
 ## 当前目标
 
