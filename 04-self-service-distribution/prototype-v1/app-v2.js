@@ -48,31 +48,31 @@ const shortName=n=>({
 // 官网 Logo、发行 Builder、渠道数量都从这里生成，禁止再使用旧官网的“25 张图全量轮播”。
 const channelData=[
   // 中国大陆 / 华语渠道
-  {name:'QQ音乐',region:'cn',logo:'QQ音乐',status:'可发行 · AI 内容需声明；部分 AI 内容收益和推荐受限'},
-  {name:'酷狗音乐',region:'cn',logo:'酷狗音乐',status:'可发行 · AI 内容遵循 TME 规则'},
-  {name:'酷我音乐',region:'cn',logo:'酷我音乐',status:'可发行 · AI 内容遵循 TME 规则'},
-  {name:'网易云音乐',region:'cn',logo:'网易云音乐',status:'可发行 · AI 内容可能被平台标识'},
-  {name:'汽水音乐',region:'cn',logo:'汽水音乐',status:'可发行 · 高相似度内容可能被限制'},
-  {name:'番茄音乐',region:'cn',logo:'番茄音乐',status:'可发行 · 支持符合要求的 AI 原创音乐'},
-  {name:'华为音乐',region:'cn',logo:'华为音乐',status:'可发行 · AI 专属规则持续确认'},
-  {name:'咪咕音乐',region:'cn',logo:'咪咕音乐',status:'可发行 · 当前为离线批次交付，处理时效不同',specialDelivery:true},
-  {name:'阿里音乐',region:'cn',logo:'阿里音乐',status:'可发行 · AI 专属规则持续确认'},
-  {name:'KKBOX',region:'cn',logo:'KKBOX',status:'可发行 · AI 专属规则持续确认'},
+  {name:'QQ音乐',region:'cn',logo:'QQ音乐',status:'可以发，但有限制 · 部分 AI 内容收益和推荐受限'},
+  {name:'酷狗音乐',region:'cn',logo:'酷狗音乐',status:'可以发，但有限制 · 部分 AI 内容收益和推荐受限'},
+  {name:'酷我音乐',region:'cn',logo:'酷我音乐',status:'可以发，但有限制 · 部分 AI 内容收益和推荐受限'},
+  {name:'网易云音乐',region:'cn',logo:'网易云音乐',status:'可以发 · 作品可能显示 AI 标识'},
+  {name:'汽水音乐',region:'cn',logo:'汽水音乐',status:'可以发，但有限制 · 高度相似内容可能被限制'},
+  {name:'番茄音乐',region:'cn',logo:'番茄音乐',status:'可以发'},
+  {name:'华为音乐',region:'cn',logo:'华为音乐',status:'可以发'},
+  {name:'咪咕音乐',region:'cn',logo:'咪咕音乐',status:'可以发 · 上线时间可能相对较长',specialDelivery:true},
+  {name:'阿里音乐',region:'cn',logo:'阿里音乐',status:'可以发'},
+  {name:'KKBOX',region:'cn',logo:'KKBOX',status:'可以发'},
 
   // 海外渠道
-  {name:'Amazon Music',region:'global',logo:'Amazon Music',status:'可发行 · 纯 AI 的正式 B2B 规则仍需持续确认',confirmFullAI:true},
-  {name:'Apple Music',region:'global',logo:'Apple Music',status:'可发行 · 支持提交 AI 透明度信息'},
-  {name:'Bandcamp',region:'global',logo:'Bandcamp',status:'普通音乐可发行 · 全部或实质性 AI 生成内容不可发行',blockedFullAI:true},
-  {name:'Beatport',region:'global',logo:'Beatport',status:'AI 辅助可发行 · 完全或主要由 AI 生成的音乐不可发行',blockedFullAI:true},
-  {name:'Deezer',region:'global',logo:'Deezer',status:'可发行 · 纯 AI 内容不进入算法推荐或编辑歌单',warning:true},
-  {name:'Meta（Facebook / Instagram）',region:'global',logo:'Meta（Facebook / Instagram）',status:'可发行 · 纯 AI 目录的 B2B 准入需按实际规则确认',confirmFullAI:true},
-  {name:'Qobuz',region:'global',logo:'Qobuz',status:'普通 / AI 辅助可发行 · 100% AI 内容不可新交付',blockedFullAI:true},
-  {name:'SoundCloud',region:'global',logo:'SoundCloud',status:'经 AudioSalad 交付 · 纯 AI 特殊规则需确认',confirmFullAI:true},
-  {name:'Spotify',region:'global',logo:'Spotify',status:'可发行 · 部分 AI Persona 的推荐资格可能受限',warning:true},
-  {name:'TIDAL',region:'global',logo:'TIDAL',status:'可发行 · 100% AI 录音不参与版税分配',warning:true},
-  {name:'TikTok',region:'global',logo:'TikTok',status:'可发行 · 纯 AI 音乐目录的 B2B 规则需持续确认',confirmFullAI:true},
-  {name:'Yandex',region:'global',logo:'Yandex',status:'可发行 · AI 标识可能影响推荐权重',warning:true},
-  {name:'YouTube Music',region:'global',logo:'YouTube Music',status:'可发行 · 支持 Fully / Partially Gen AI 标记'}
+  {name:'Amazon Music',region:'global',logo:'Amazon Music',status:'AI 辅助通常可以发 · 主要由 AI 生成需确认',confirmFullAI:true},
+  {name:'Apple Music',region:'global',logo:'Apple Music',status:'可以发'},
+  {name:'Bandcamp',region:'global',logo:'Bandcamp',status:'AI 辅助需判断 · 主要由 AI 生成暂不支持',blockedFullAI:true},
+  {name:'Beatport',region:'global',logo:'Beatport',status:'AI 辅助可以发 · 主要由 AI 生成暂不支持',blockedFullAI:true},
+  {name:'Deezer',region:'global',logo:'Deezer',status:'可以发，但有限制 · 主要由 AI 生成的音乐不进入推荐',warning:true},
+  {name:'Meta（Facebook / Instagram）',region:'global',logo:'Meta（Facebook / Instagram）',status:'AI 内容允许 · 主要由 AI 生成需确认',confirmFullAI:true},
+  {name:'Qobuz',region:'global',logo:'Qobuz',status:'AI 辅助可以发 · 主要由 AI 生成暂不支持',blockedFullAI:true},
+  {name:'SoundCloud',region:'global',logo:'SoundCloud',status:'AI 辅助可以发 · 主要由 AI 生成需确认',confirmFullAI:true},
+  {name:'Spotify',region:'global',logo:'Spotify',status:'可以发，但有限制 · 部分 AI 内容推荐可能受限',warning:true},
+  {name:'TIDAL',region:'global',logo:'TIDAL',status:'可以发，但有限制 · 主要由 AI 生成的录音收益可能受限',warning:true},
+  {name:'TikTok',region:'global',logo:'TikTok',status:'AI 内容允许 · 主要由 AI 生成需确认',confirmFullAI:true},
+  {name:'Yandex',region:'global',logo:'Yandex',status:'可以发，但有限制 · AI 标识可能影响推荐',warning:true},
+  {name:'YouTube Music',region:'global',logo:'YouTube Music',status:'可以发 · 支持填写 AI 使用信息'}
 ];
 
 function imageMarkup(name){
@@ -137,7 +137,7 @@ function initBilling(){
     document.querySelector('[data-unit-china]').textContent=p.chinaUnit;
     document.querySelector('[data-price-global]').textContent='¥'+p.global;
     document.querySelector('[data-unit-global]').textContent=p.globalUnit;
-    document.querySelectorAll('[data-billing-note]').forEach(n=>n.textContent=btn.dataset.billing==='monthly'?'按月支付，适合更灵活地管理发行预算':'一次支付全年，价格更优惠');
+    document.querySelectorAll('[data-billing-note]').forEach(n=>n.textContent=btn.dataset.billing==='monthly'?'按月支付，预算更灵活':'一次支付全年，价格更优惠');
   }));
 }
 
@@ -170,8 +170,8 @@ function initReleaseBuilder(){
   const list=document.querySelector('[data-channels]');
 
   const stateFor=(c)=>{
-    if(aiMode==='full'&&c.blockedFullAI)return {disabled:true,text:'当前这类作品不能发行到该平台'};
-    if(aiMode==='full'&&c.confirmFullAI)return {disabled:true,text:'100% AI 内容当前需要渠道确认，暂不计入本次可发行平台'};
+    if(aiMode==='full'&&c.blockedFullAI)return {disabled:true,text:'主要由 AI 自动生成的作品当前不支持该平台'};
+    if(aiMode==='full'&&c.confirmFullAI)return {disabled:true,text:'主要由 AI 自动生成的作品需先确认，暂不计入当前可选平台'};
     return {disabled:false,text:c.status};
   };
 
@@ -204,8 +204,8 @@ function initReleaseBuilder(){
     const available=channelData.filter(c=>!stateFor(c).disabled).length;
     const rec=document.querySelector('[data-sub-recommend]');
     if(rec)rec.innerHTML=selected.size>=10
-      ?`<div class="top"><strong>经常发行？订阅可能更划算</strong><span class="tag">可选</span></div><p>全球发行订阅最多覆盖 50 首当前在架歌曲；按这首歌目前的作品属性，可从 ${available} 个已接入平台中选择。</p>`
-      :`<div class="top"><strong>这次按量发行更合适</strong><span class="tag">按实际使用付费</span></div><p>你只选择了 ${selected.size} 个平台，只需要为实际使用的平台付费。</p>`;
+      ?`<div class="top"><strong>高频发行可考虑订阅</strong><span class="tag">可选</span></div><p>全球发行订阅最多覆盖 50 首当前在架歌曲；按当前作品属性，可从 ${available} 个已接入平台中选择。</p>`
+      :`<div class="top"><strong>当前更适合按量发行</strong><span class="tag">按实际使用付费</span></div><p>当前选择 ${selected.size} 个平台，仅按实际使用的平台付费。</p>`;
   };
 
   document.querySelectorAll('[data-ai-mode]').forEach(el=>el.addEventListener('click',()=>{
