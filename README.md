@@ -20,7 +20,7 @@ flowchart LR
 
 ## 当前阶段
 
-**Phase 1：产品架构已收口。Phase 2：商业模式设计进行中，星球发行商业模式已完成 v1.1。**
+**Phase 1：产品架构已收口。Phase 2：商业模式设计进行中；星球发行商业模式已完成 v1.1，星球发行·企业版已进入产品定义与行业基线阶段。**
 
 ```mermaid
 flowchart LR
@@ -49,13 +49,14 @@ flowchart LR
 
 - `02-star-release/commercial-model-v1.1.md`：**星球发行商业模式正式基线**
 - `02-star-release/commercial-model-v1.0.md`：上一轮商业模式设计稿，保留用于版本追溯
-- `03-enterprise/`：星球发行·企业版
+- `03-enterprise/product-definition-and-architecture-v0.1.md`：**星球发行·企业版产品定义与架构起点**
 - `04-self-service-distribution/`：AI 音乐发行 / 付费自助发行
 
 ### 商业与研究
 
 - `05-commercial/`：统一商业能力与定价框架
-- `06-research/`：竞品与行业研究
+- `06-research/global-distribution-business-models-2026.md`：海外零售发行商业模式研究
+- `06-research/enterprise-white-label-api-competitor-research-2026.md`：**企业音乐发行基础设施 White-label / API 竞品研究**
 - `07-decisions/product-architecture-decisions-v1.0.md`：产品架构决策清单
 - `07-decisions/star-release-revenue-share-policy-v1.0.md`：星球发行分成政策决策
 
