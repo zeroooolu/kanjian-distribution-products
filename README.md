@@ -14,13 +14,13 @@
 ```mermaid
 flowchart LR
     A[统一发行能力底座] --> B[星球发行\nBasic / Professional / Plus]
-    A --> C[星球发行·企业版\nWhite-label / API]
+    A --> C[星球发行·企业版\n品牌发行平台 / API]
     A --> D[AI 音乐发行\n付费自助发行]
 ```
 
 ## 当前阶段
 
-**Phase 1：产品架构已收口。Phase 2：商业模式设计进行中；星球发行商业模式已完成 v1.1，星球发行·企业版已完成产品定义 / 行业基线并进入官网原型迭代。**
+**Phase 1：产品架构已收口。Phase 2：商业模式设计进行中；星球发行商业模式已完成 v1.1；星球发行·企业版已完成行业研究、真实业务基线和商业模式 v0.1，进入可销售 Enterprise Product Demo 设计阶段。**
 
 ```mermaid
 flowchart LR
@@ -49,8 +49,11 @@ flowchart LR
 
 - `02-star-release/commercial-model-v1.1.md`：**星球发行商业模式正式基线**
 - `02-star-release/commercial-model-v1.0.md`：上一轮商业模式设计稿，保留用于版本追溯
-- `03-enterprise/product-definition-and-architecture-v0.1.md`：**星球发行·企业版产品定义与架构起点**
-- `03-enterprise/prototype-v1/`：**星球发行·企业版官网原型 v1（Vercel `/enterprise`）**
+- `03-enterprise/product-definition-and-architecture-v0.1.md`：星球发行·企业版产品定义与架构起点
+- `03-enterprise/business-baseline-v0.1.md`：**企业版真实业务、DSP、发行 SOP、账号、合同、收益与技术能力基线**
+- `03-enterprise/commercial-model-v0.1.md`：**企业版商业模式与历史报价/成本基线**
+- `03-enterprise/roadmap-v0.1.md`：**企业版产品 Demo 与后续实施 Roadmap**
+- `03-enterprise/prototype-v1/`：星球发行·企业版官网原型（Vercel `/enterprise`）
 - `04-self-service-distribution/`：AI 音乐发行 / 付费自助发行
 
 ### 商业与研究
