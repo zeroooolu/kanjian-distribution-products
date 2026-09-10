@@ -18,6 +18,14 @@
     fixes.dataset.homeV4Fixes='1';
     document.head.appendChild(fixes);
   }
+
+  if(!document.querySelector('link[data-home-v5]')){
+    const refine=document.createElement('link');
+    refine.rel='stylesheet';
+    refine.href='/04-self-service-distribution/prototype-v1/home-v5-ssrelease.css?v=20260910';
+    refine.dataset.homeV5='1';
+    document.head.appendChild(refine);
+  }
 })();
 
 const RAW='/assets/platform-logos/';
