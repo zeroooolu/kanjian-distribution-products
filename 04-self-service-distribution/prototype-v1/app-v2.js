@@ -95,6 +95,18 @@ function addImgFallback(scope=document){
   });
 }
 
+function normalizeMarketingNav(){
+  const menu=document.querySelector('header.nav .menu');
+  if(!menu)return;
+  const path=location.pathname.replace(/\/$/,'')||'/';
+  const active=path==='/platforms'?'platforms':path==='/pricing'?'pricing':'product';
+  menu.innerHTML=[
+    ['product','/','产品'],
+    ['platforms','/platforms','支持平台'],
+    ['pricing','/pricing','价格']
+  ].map(([key,href,label])=>`<a ${key===active?'class="active" ':''}href="${href}">${label}</a>`).join('');
+}
+
 function buildMarquee(){
   document.querySelectorAll('[data-dsp-marquee]').forEach(el=>{
     if(el.children.length)return;
@@ -219,7 +231,7 @@ function initReleaseBuilder(){
 
 function loadStarLogoBundle(){
   if(window.STAR_DSP_LOGOS)return Promise.resolve();
-  if(!document.querySelector('[data-dsp-marquee],[data-release-builder]'))return Promise.resolve();
+  if(!document.querySelector('[data-dsp-marquee],[data-release-builder],[data-logo]'))return Promise.resolve();
   return new Promise(resolve=>{
     const script=document.createElement('script');
     script.src='/api/dsp-logos.js';
@@ -231,6 +243,7 @@ function loadStarLogoBundle(){
 }
 
 document.addEventListener('DOMContentLoaded',async()=>{
+  normalizeMarketingNav();
   await loadStarLogoBundle();
   buildMarquee();
   hydrateNamedLogos();
