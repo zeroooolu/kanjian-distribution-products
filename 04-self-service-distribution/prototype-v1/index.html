@@ -7,6 +7,7 @@
 <meta name="description" content="面向 AI 音乐创作者、制作人和厂牌的专业音乐发行服务。一次提交，完成 AI 信息声明、发行审核，并把音乐发行到中国及全球主流音乐平台。">
 <link rel="stylesheet" href="/04-self-service-distribution/prototype-v1/styles.css">
 <link rel="stylesheet" href="/04-self-service-distribution/prototype-v1/brand-v2.css">
+<link rel="stylesheet" href="/04-self-service-distribution/prototype-v1/home-v6-distribute.css?v=20260910">
 </head>
 <body class="home-v3">
 <header class="nav home-nav">
@@ -80,13 +81,73 @@
     </div>
   </section>
 
-  <section class="dsp-band dsp-band-v3" id="channels">
-    <div class="container dsp-band-head">
-      <div><strong>一次发行，让世界听见</strong></div>
-      <p>覆盖中国及全球主流音乐平台</p>
+  <section class="distribution-section" id="channels">
+    <div class="container distribution-shell">
+      <div class="distribution-head">
+        <div class="distribution-title">
+          <span class="distribution-kicker">发行网络</span>
+          <h2>一次发行，<br><em>让世界听见。</em></h2>
+        </div>
+        <div class="distribution-copy">
+          <p>连接中国及全球主流音乐平台。不同 AI 创作方式按照平台最新规则判断发行资格，发行前直接显示可发行状态和限制。</p>
+          <div class="distribution-actions">
+            <a class="distribution-primary" href="/platforms">查看全部支持平台 →</a>
+            <a class="distribution-secondary" href="/release">开始发行</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dsp-motion" aria-label="支持的音乐平台示意">
+        <div class="dsp-motion-row dsp-motion-row-forward">
+          <div class="dsp-motion-track">
+            <div class="dsp-logo-group">
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/spotify.jpeg" alt="Spotify"><span>Spotify</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/apple-music.jpg" alt="Apple Music"><span>Apple Music</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/qq-music.png" alt="QQ音乐"><span>QQ音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/netease-music.jpg" alt="网易云音乐"><span>网易云音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/amazon-music.png" alt="Amazon Music"><span>Amazon Music</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/youtube-music.jpg" alt="YouTube Music"><span>YouTube Music</span></div>
+            </div>
+            <div class="dsp-logo-group" aria-hidden="true">
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/spotify.jpeg" alt=""><span>Spotify</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/apple-music.jpg" alt=""><span>Apple Music</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/qq-music.png" alt=""><span>QQ音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/netease-music.jpg" alt=""><span>网易云音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/amazon-music.png" alt=""><span>Amazon Music</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/youtube-music.jpg" alt=""><span>YouTube Music</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dsp-motion-row dsp-motion-row-reverse">
+          <div class="dsp-motion-track">
+            <div class="dsp-logo-group">
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/tiktok.jpeg" alt="TikTok"><span>TikTok</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/kugou-music.png" alt="酷狗音乐"><span>酷狗音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/kuwo-music.png" alt="酷我音乐"><span>酷我音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/douyin-qishui.jpg" alt="汽水音乐"><span>汽水音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/huawei-music.jpg" alt="华为音乐"><span>华为音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/kkbox.png" alt="KKBOX"><span>KKBOX</span></div>
+            </div>
+            <div class="dsp-logo-group" aria-hidden="true">
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/tiktok.jpeg" alt=""><span>TikTok</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/kugou-music.png" alt=""><span>酷狗音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/kuwo-music.png" alt=""><span>酷我音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/douyin-qishui.jpg" alt=""><span>汽水音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/huawei-music.jpg" alt=""><span>华为音乐</span></div>
+              <div class="dsp-logo-tile"><img src="/assets/platform-logos/kkbox.png" alt=""><span>KKBOX</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="distribution-stats">
+        <div class="distribution-stat"><strong>23</strong><span>当前已接入音乐平台</span></div>
+        <div class="distribution-stat"><strong>中国 + 全球</strong><span>覆盖主要流媒体与音乐服务</span></div>
+        <div class="distribution-stat"><strong>动态判断</strong><span>按作品属性匹配平台最新 AI 规则</span></div>
+      </div>
+      <p class="distribution-note">实际可发行平台以作品类型、权利情况和音乐平台最新规则为准。</p>
     </div>
-    <div class="marquee" data-dsp-marquee></div>
-    <p class="dsp-note">实际可发行平台以作品类型和平台最新规则为准。</p>
   </section>
 
   <section class="section story-section" id="guide">
