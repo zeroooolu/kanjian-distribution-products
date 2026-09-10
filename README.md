@@ -20,7 +20,7 @@ flowchart LR
 
 ## 当前阶段
 
-**Phase 1：产品架构已收口。Phase 2：商业模式设计进行中；星球发行商业模式已完成 v1.1，星球发行·企业版已进入产品定义与行业基线阶段。**
+**Phase 1：产品架构已收口。Phase 2：商业模式设计进行中；星球发行商业模式已完成 v1.1，星球发行·企业版已完成产品定义 / 行业基线并进入官网原型迭代。**
 
 ```mermaid
 flowchart LR
@@ -50,6 +50,7 @@ flowchart LR
 - `02-star-release/commercial-model-v1.1.md`：**星球发行商业模式正式基线**
 - `02-star-release/commercial-model-v1.0.md`：上一轮商业模式设计稿，保留用于版本追溯
 - `03-enterprise/product-definition-and-architecture-v0.1.md`：**星球发行·企业版产品定义与架构起点**
+- `03-enterprise/prototype-v1/`：**星球发行·企业版官网原型 v1（Vercel `/enterprise`）**
 - `04-self-service-distribution/`：AI 音乐发行 / 付费自助发行
 
 ### 商业与研究
