@@ -107,6 +107,15 @@ function normalizeMarketingNav(){
   ].map(([key,href,label])=>`<a ${key===active?'class="active" ':''}href="${href}">${label}</a>`).join('');
 }
 
+function connectLoginToApp(){
+  document.querySelectorAll('header.nav .nav-actions a').forEach(link=>{
+    if(link.textContent.trim()==='登录')link.href='/app';
+  });
+  document.querySelectorAll('.final-cta .hero-actions a').forEach(link=>{
+    if(link.textContent.trim()==='登录账户')link.href='/app';
+  });
+}
+
 function buildMarquee(){
   document.querySelectorAll('[data-dsp-marquee]').forEach(el=>{
     if(el.children.length)return;
@@ -244,6 +253,7 @@ function loadStarLogoBundle(){
 
 document.addEventListener('DOMContentLoaded',async()=>{
   normalizeMarketingNav();
+  connectLoginToApp();
   await loadStarLogoBundle();
   buildMarquee();
   hydrateNamedLogos();
