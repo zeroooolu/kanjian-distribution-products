@@ -1,6 +1,7 @@
 # 星球发行 Tier 产品化 Demo
 
 > Vercel Project: `star-release-tier`  
+> Production Demo: `https://star-release-tier.vercel.app`  
 > Source Root: `02-star-release/prototype-tier`  
 > Product: 星球发行（Managed Distribution）  
 > Commercial Baseline: `02-star-release/commercial-model-v1.1.md`
