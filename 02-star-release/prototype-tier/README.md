@@ -28,7 +28,7 @@
 ### 登录后
 
 - `app.html`：工作台首页，展示当前等级、剩余年度发行额度和待处理事项；
-- `app-plan.html`：我的合作方案，展示当前权益、使用量，并进入扩容流程；
+- `app-plan.html`：合作方案，展示当前权益、使用量，并进入扩容流程；
 - `app-albums.html`：专辑列表 + 创建发行前 Quota Gate；80% 提醒、100% / 超额阻断、扩容入口、Professional 批量能力差异；
 - `app-artists.html`：艺人列表 + 活跃主要艺人观察指标；Basic 5 / Professional 100 仅展示观察，不硬阻断；
 - `capacity.html`：扩容选购、数量、订单确认、Demo 支付、生效与订单记录；购买后额度同步回合作方案 / 首页 / 专辑列表；
