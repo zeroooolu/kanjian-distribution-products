@@ -1,0 +1,350 @@
+/* Prototype v4 homepage refinements.
+ * Keep the shared v2 visual system intact and scope market-facing refinements
+ * to the enterprise home page wherever possible.
+ */
+
+:focus-visible {
+  outline: 3px solid rgba(49, 95, 244, .28);
+  outline-offset: 3px;
+}
+
+.site-nav .nav-toggle {
+  color: var(--ink);
+  line-height: 1;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.site-nav .nav-toggle:hover {
+  background: #f3f6fb;
+}
+
+[data-page="home"] .hero {
+  padding-top: 94px;
+}
+
+[data-page="home"] .hero-grid {
+  grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+  gap: clamp(42px, 5vw, 68px);
+}
+
+[data-page="home"] .hero-copy {
+  min-width: 0;
+}
+
+[data-page="home"] .hero h1 {
+  max-width: 650px;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+[data-page="home"] .hero-copy > p {
+  max-width: 600px;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+[data-page="home"] .hero-actions .btn {
+  min-width: 124px;
+}
+
+[data-page="home"] .hero-proof {
+  row-gap: 10px;
+}
+
+[data-page="home"] .console {
+  width: 100%;
+  min-width: 0;
+}
+
+[data-page="home"] .console-body > section,
+[data-page="home"] .metric-row > div,
+[data-page="home"] .release-card {
+  min-width: 0;
+}
+
+[data-page="home"] .section-head h2,
+[data-page="home"] .dark-grid h2,
+[data-page="home"] .cta h2 {
+  letter-spacing: -.03em;
+  text-wrap: balance;
+}
+
+[data-page="home"] .section-head p,
+[data-page="home"] .dark-grid p,
+[data-page="home"] .cta p,
+[data-page="home"] .product-pair p,
+[data-page="home"] .feature-grid p,
+[data-page="home"] .solution-preview p {
+  text-wrap: pretty;
+}
+
+[data-page="home"] .product-pair article {
+  min-width: 0;
+}
+
+[data-page="home"] .visual-api code {
+  white-space: nowrap;
+}
+
+[data-page="home"] .feature-grid article,
+[data-page="home"] .solution-preview article,
+[data-page="home"] .plan-mini article {
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+[data-page="home"] .feature-grid article:hover,
+[data-page="home"] .solution-preview article:hover,
+[data-page="home"] .plan-mini article:hover {
+  transform: translateY(-3px);
+  border-color: #d5dcef;
+  box-shadow: 0 14px 34px rgba(25, 42, 82, .08);
+}
+
+[data-page="home"] .solution-preview.home-use-cases {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+[data-page="home"] .home-section-head-link {
+  align-self: end;
+  justify-self: end;
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+[data-page="home"] .plan-mini strong,
+[data-page="home"] .usage > strong {
+  white-space: nowrap;
+}
+
+[data-page="home"] .plan-mini p {
+  min-height: 39px;
+}
+
+[data-page="home"] .logo-marquee:focus-within .logo-track {
+  animation-play-state: paused;
+}
+
+[data-page="home"] .cta .btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 1050px) {
+  [data-page="home"] .hero-grid {
+    gap: 42px;
+  }
+
+  [data-page="home"] .hero-copy > p {
+    max-width: 760px;
+  }
+
+  [data-page="home"] .console {
+    max-width: 820px;
+  }
+
+  [data-page="home"] .solution-preview.home-use-cases {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .nav-inner {
+    gap: 12px;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+  }
+
+  [data-page="home"] .hero {
+    padding: 68px 0 58px;
+  }
+
+  [data-page="home"] .hero h1 {
+    max-width: 620px;
+    line-height: 1.08;
+  }
+
+  [data-page="home"] .hero-grid {
+    gap: 36px;
+  }
+
+  [data-page="home"] .home-section-head-link {
+    justify-self: start;
+    margin: 0;
+  }
+
+  [data-page="home"] .solution-preview.home-use-cases {
+    grid-template-columns: 1fr;
+  }
+
+  [data-page="home"] .plan-mini p {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav-inner {
+    gap: 7px;
+  }
+
+  .brand img {
+    width: 86px;
+  }
+
+  .brand > b,
+  .brand > span {
+    display: none;
+  }
+
+  .nav-actions {
+    display: flex !important;
+  }
+
+  .nav-actions .btn {
+    padding: 8px 10px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .nav-toggle {
+    flex: 0 0 auto;
+    font-size: 22px;
+  }
+
+  [data-page="home"] .hero h1 {
+    font-size: clamp(36px, 10.5vw, 42px);
+    line-height: 1.1;
+  }
+
+  [data-page="home"] .hero-copy > p {
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  [data-page="home"] .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  [data-page="home"] .hero-actions .btn {
+    width: 100%;
+  }
+
+  [data-page="home"] .hero-proof {
+    gap: 8px 14px;
+    margin-top: 22px;
+  }
+
+  [data-page="home"] .hero-proof span {
+    font-size: 11px;
+  }
+
+  [data-page="home"] .console-body {
+    grid-template-columns: 78px minmax(0, 1fr);
+    min-height: 330px;
+  }
+
+  [data-page="home"] .console-body aside {
+    padding: 12px 5px;
+  }
+
+  [data-page="home"] .console-body aside i {
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+
+  [data-page="home"] .console-body > section {
+    padding: 12px;
+  }
+
+  [data-page="home"] .console-head h3 {
+    font-size: 18px;
+  }
+
+  [data-page="home"] .console-head button {
+    padding: 7px 8px;
+  }
+
+  [data-page="home"] .metric-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  [data-page="home"] .metric-row div {
+    padding: 9px 7px;
+  }
+
+  [data-page="home"] .metric-row span {
+    font-size: 8px;
+  }
+
+  [data-page="home"] .metric-row strong {
+    font-size: 17px;
+  }
+
+  [data-page="home"] .release-card {
+    padding: 12px 10px;
+  }
+
+  [data-page="home"] .release-flow {
+    margin-top: 18px;
+  }
+
+  [data-page="home"] .section-head h2,
+  [data-page="home"] .dark-grid h2,
+  [data-page="home"] .cta h2 {
+    line-height: 1.16;
+  }
+
+  [data-page="home"] .visual {
+    height: 136px;
+    padding: 24px;
+  }
+
+  [data-page="home"] .visual-platform b {
+    font-size: 22px;
+  }
+
+  [data-page="home"] .visual-api code {
+    font-size: 17px;
+  }
+
+  [data-page="home"] .usage {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  [data-page="home"] .api-code {
+    padding: 8px 18px;
+  }
+
+  [data-page="home"] .api-code code {
+    padding: 15px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .logo-track {
+    animation: none;
+  }
+
+  .btn,
+  [data-page="home"] .feature-grid article,
+  [data-page="home"] .solution-preview article,
+  [data-page="home"] .plan-mini article {
+    transition: none;
+  }
+}
