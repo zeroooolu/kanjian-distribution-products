@@ -1,0 +1,56 @@
+name: Unify enterprise Contact Sales CTA
+
+on:
+  push:
+    branches:
+      - chore/unify-contact-sales
+    paths:
+      - '.github/scripts/unify_enterprise_contact_sales.py'
+      - '.github/workflows/unify-enterprise-contact-sales.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+          fetch-depth: 0
+
+      - name: Checkout tools
+        uses: actions/checkout@v4
+        with:
+          ref: chore/unify-contact-sales
+          path: tools
+          fetch-depth: 1
+
+      - name: Apply CTA unification
+        working-directory: site
+        run: python ../tools/.github/scripts/unify_enterprise_contact_sales.py
+
+      - name: Verify generated pages
+        working-directory: site
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('03-enterprise/prototype-v4/index.html').read_text()
+          assert p.count('class="enterprise-contact-cta"') == 6
+          assert p.count('提交基本业务信息，结合曲库规模、客户协作方式与系统集成需求，评估适合的产品版本、发行 API 或组合方案。') == 6
+          assert p.count('href="/enterprise/apply" data-route>申请企业方案</a>') >= 6
+          print('CTA verification passed')
+          PY
+
+      - name: Commit preview branch
+        working-directory: site
+        run: |
+          git config user.name "zeroooolu"
+          git config user.email "zeroooolu@gmail.com"
+          git checkout -B chore/unify-contact-sales-preview
+          git add 03-enterprise/prototype-v4/index.html 03-enterprise/prototype-v4/styles.css
+          git commit -m "refine(enterprise): unify contact sales CTA"
+          git push -f origin chore/unify-contact-sales-preview
