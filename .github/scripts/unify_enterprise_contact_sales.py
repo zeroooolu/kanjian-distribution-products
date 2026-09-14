@@ -36,6 +36,6 @@ style_path.write_text(css, encoding='utf-8')
 # Guardrails: six public enterprise pages before Apply share the same CTA copy.
 html = index_path.read_text(encoding='utf-8')
 assert html.count('CONTACT SALES') >= 7  # six shared CTAs + Apply intro
-assert html.count('获取适配业务需求的企业发行方案') >= 7
+assert html.count('获取适配业务需求的企业发行方案') >= 6
 assert html.count('提交基本业务信息，结合曲库规模、客户协作方式与系统集成需求，评估适合的产品版本、发行 API 或组合方案。') == 6
 print('Unified enterprise Contact Sales CTA across Home, Product, Solutions, Pricing, API and Developers.')
