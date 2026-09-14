@@ -1,0 +1,70 @@
+name: Normalize enterprise copy voice
+
+on:
+  push:
+    branches: [chore/apply-page-polish]
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Remove person-addressed copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('03-enterprise/prototype-v4/index.html')
+          s = p.read_text()
+          replacements = {
+              '搭建自己的<br><em>音乐发行平台</em>': '搭建自有品牌<br><em>音乐发行平台</em>',
+              '用自己的品牌开展发行业务': '以自有品牌开展发行业务',
+              '使用企业自己的品牌、域名和客户入口': '使用企业自有品牌、域名和客户入口',
+              '建立自己的发行品牌和客户平台': '建立自有发行品牌和客户平台',
+              '找到适合你的企业发行方案': '匹配适合业务规模的企业发行方案',
+              '告诉我们你的曲库规模、合作客户数量和现有系统情况，我们会根据实际业务确认合适的版本和接入方式。': '提交曲库规模、合作客户数量和现有系统信息，用于评估合适的产品版本与接入方式。',
+              '用自己的品牌对外提供发行服务。': '以自有品牌对外提供发行服务。',
+              '客户、曲库和发行记录留在自己的业务体系中。': '客户、曲库和发行记录统一沉淀于企业业务体系。',
+              '以企业自己的品牌开展发行业务': '以企业自有品牌开展发行业务',
+              '构建适合你业务的发行基础设施': '构建适配业务需求的发行基础设施',
+              '告诉我们你的曲库规模、客户结构和现有系统，我们将基于实际业务确定合适的产品组合与实施方案。': '提交曲库规模、客户结构和现有系统信息，用于评估合适的产品组合与实施方案。',
+              '提交业务场景、预计发行规模与现有系统信息，我们将确认接口范围、接入方式、测试环境与联调计划。': '提交业务场景、预计发行规模与现有系统信息，用于确认接口范围、接入方式、测试环境与联调计划。',
+              '获取适合你业务的<br>企业发行方案': '获取适配业务需求的<br>企业发行方案',
+              '留下基本业务信息，我们将根据曲库规模、客户协作方式和系统集成需求，协助确认合适的产品版本、发行 API 或组合方案。': '提交基本业务信息，可结合曲库规模、客户协作方式和系统集成需求，评估合适的产品版本、发行 API 或组合方案。',
+              '告诉我们你的业务情况': '提交业务基本信息',
+              '仅需填写基础信息，便于我们准确理解你的企业发行需求。': '仅需填写基础信息，用于评估企业发行需求与适配方案。',
+              '搭建企业自己的发行平台与客户门户': '搭建企业自有发行平台与客户门户',
+              '由我们根据业务现状协助判断产品组合': '根据业务现状提供产品组合建议',
+              '我们已收到你的企业咨询。正式流程中，将根据业务信息进一步确认产品版本、API 接入或实施范围。': '企业咨询信息已提交。正式流程中，将根据业务信息进一步确认产品版本、API 接入或实施范围。',
+          }
+          for old, new in replacements.items():
+              if old not in s:
+                  print('warning: source phrase not found:', old)
+              s = s.replace(old, new)
+          p.write_text(s)
+
+          remaining = []
+          for m in re.finditer(r'[你您我]|自己', s):
+              start = max(0, m.start() - 45)
+              end = min(len(s), m.end() + 70)
+              remaining.append(s[start:end].replace('\n', ' '))
+          if remaining:
+              print('Remaining person-addressed copy:')
+              for item in remaining[:30]: print(item)
+              raise SystemExit(1)
+          PY
+      - name: Commit to main
+        run: |
+          git config user.name "zeroooolu"
+          git config user.email "zeroooolu@gmail.com"
+          git add 03-enterprise/prototype-v4/index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "refine(enterprise): remove person-addressed copy"
+          git push origin HEAD:main
