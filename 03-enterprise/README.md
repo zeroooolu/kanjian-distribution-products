@@ -214,7 +214,8 @@ Developer Product 应逐步具备：
 | 发行资料校验与合规检查 | ✓ | ✓ | ✓ |
 | 发行状态与异常跟踪 | ✓ | ✓ | ✓ |
 | 更新 / 重传 / 下架 | ✓ | ✓ | ✓ |
-| 批量发行与批量任务 | 标准批量 | 高级批量 | 高级批量 / API 自动化 |
+| 批量发行 | — | ✓ | ✓ |
+| API 自动化发行 | 随 API | 随 API | ✓ |
 | **数据、收入与结算** |  |  |  |
 | 平台数据与收入报表 | ✓ | ✓ | ✓ |
 | 收入与提现管理 | ✓ | ✓ | ✓ |
@@ -228,7 +229,7 @@ Developer Product 应逐步具备：
 | 发行 API | 可增购 | 可增购 | 包含 |
 | Webhook / API 日志 | 随 API | 随 API | ✓ |
 | **实施与服务** |  |  |  |
-| 历史曲库迁移 | 可选服务 | 可选服务 | 项目制实施 |
+| 历史曲库迁移 | 可选服务 | 可选服务 | 按项目范围 |
 | 客户支持 | 标准支持 | 优先支持 | 专属客户经理 |
 | 上线与培训 | 标准上线指引 | 首次实施培训 | 项目制实施 / 定制培训 |
 | 技术支持 | 标准技术支持 | 优先技术支持 | 专属技术支持 / SLA |
@@ -250,6 +251,8 @@ xml_access
 ddex_access
 distribution_api
 webhook_and_api_logs
+batch_distribution
+api_automation
 migration_service
 support_level
 onboarding_level
@@ -268,6 +271,8 @@ Basic
 - xml_access: false
 - ddex_access: false
 - distribution_api: addon
+- batch_distribution: false
+- api_automation: with_api
 - support_level: standard
 - onboarding_level: guide
 - sla_level: standard
@@ -281,6 +286,8 @@ Professional
 - xml_access: true
 - ddex_access: false
 - distribution_api: addon
+- batch_distribution: true
+- api_automation: with_api
 - support_level: priority
 - onboarding_level: first_implementation_training
 - sla_level: priority
@@ -294,6 +301,8 @@ Enterprise
 - xml_access: true
 - ddex_access: true
 - distribution_api: included
+- batch_distribution: true
+- api_automation: true
 - support_level: dedicated_manager
 - onboarding_level: project_implementation
 - sla_level: contracted_sla
