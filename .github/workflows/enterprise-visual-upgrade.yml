@@ -1,0 +1,45 @@
+name: Enterprise visual system preview
+
+on:
+  push:
+    branches: [design/enterprise-visual-system]
+
+permissions:
+  contents: write
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          path: repo
+      - name: Checkout visual upgrade tools
+        uses: actions/checkout@v4
+        with:
+          ref: design/enterprise-visual-system
+          path: tools
+      - name: Apply visual system upgrade
+        run: |
+          python tools/.github/scripts/enterprise_visual_upgrade.py repo
+      - name: Verify generated enterprise pages
+        run: |
+          grep -q 'catalog-workbench' repo/03-enterprise/prototype-v4/index.html
+          grep -q 'architecture-studio' repo/03-enterprise/prototype-v4/index.html
+          grep -q 'mobile-plan-compare' repo/03-enterprise/prototype-v4/index.html
+          grep -q 'api-console-grid' repo/03-enterprise/prototype-v4/index.html
+          grep -q 'api-explorer' repo/03-enterprise/prototype-v4/index.html
+          grep -q 'dev-code-rail' repo/03-enterprise/prototype-v4/index.html
+          grep -q 'Enterprise visual system' repo/03-enterprise/prototype-v4/styles.css
+      - name: Commit preview branch
+        working-directory: repo
+        run: |
+          git config user.name "zeroooolu"
+          git config user.email "zeroooolu@gmail.com"
+          git add 03-enterprise/prototype-v4/index.html 03-enterprise/prototype-v4/styles.css 03-enterprise/prototype-v4/README.md
+          git diff --cached --quiet && exit 0
+          git commit -m "refine(enterprise): add visual product storytelling"
+          git push --force origin HEAD:design/enterprise-visual-preview
