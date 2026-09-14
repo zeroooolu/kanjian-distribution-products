@@ -74,3 +74,16 @@ v4 继续复用 `prototype-v2/styles.css`，并通过 `prototype-v4/styles.css` 
 - 对外商业页面优先使用“合作方 / 合作客户”，`CP` 仅允许出现在内部产品或技术语境。
 - “音乐平台”用于市场与能力描述；“渠道”用于发行操作和 `¥1 / 首 / 渠道` 的计费口径。
 - Developer 页面统一称“开发者指南 / 开发者中心”，不在非正式 API Reference 页面使用“正式 API 文档”的表达。
+
+## Enterprise Visual System
+
+商业页面优先使用产品证据而非装饰图片：
+
+- Product Window：后台、门户、曲库、发行与收入界面
+- Architecture Diagram：业务系统与发行能力的连接关系
+- Flow Diagram：发行与实施流程
+- Data Dashboard：规模、状态、收入与结算数据
+- Code Console：API 请求、响应与开发者示例
+- Event Stream：Webhook 与平台状态变化
+
+视觉内容用于解释产品和业务流程，不使用与功能无关的音乐素材图作为主要页面装饰。
