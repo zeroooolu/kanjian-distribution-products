@@ -165,3 +165,9 @@
 .footer-legal{display:flex;gap:18px}.footer-legal a{color:#8d98a8}.footer-legal a:hover{color:#fff}
 @media(max-width:820px){[data-page="product"] .product-subnav{top:64px}[data-page="product"] .section[id]{scroll-margin-top:116px}.dev-mobile-nav{display:flex;position:sticky;top:64px;z-index:30;width:100%;align-items:center;justify-content:space-between;padding:13px 20px;border:0;border-bottom:1px solid #e5e9f0;background:rgba(255,255,255,.97);color:#26334b;font-size:12px;font-weight:800;backdrop-filter:blur(14px)}.dev-mobile-nav b{font-size:16px}.dev-side{display:none!important}.dev-side.open{display:flex!important;position:sticky;top:108px;z-index:29;height:auto;max-height:calc(100vh - 108px);background:#fff}.footer-bottom{align-items:flex-start;flex-direction:column}}
 @media(max-width:560px){[data-page="product"] .product-subnav{top:64px}.footer-legal{flex-wrap:wrap}}
+
+/* Enterprise consistency finish */
+.compare-hint{display:none;margin:0 0 10px;color:#8a95a5;font-size:12px}
+[data-page="api"] .api-module-grid article,[data-page="solutions"] .scenario-card,[data-page="solutions"] .fit-card{cursor:default}
+[data-page="api"] .api-module-grid article:hover,[data-page="solutions"] .scenario-card:hover,[data-page="solutions"] .fit-card:hover{transform:none}
+@media(max-width:820px){.compare-hint{display:block}}
