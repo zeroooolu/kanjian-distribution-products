@@ -20,56 +20,21 @@
 /* Closing rhythm: scale -> launch -> CTA */
 [data-page="product"] .product-scale{padding-top:88px;padding-bottom:88px}
 [data-page="product"] .product-scale .section-head{margin-bottom:30px}
-[data-page="product"] .product-scale .section-head h2 .title-line{display:none}
-[data-page="product"] .product-scale .section-head h2:before{content:"业务规模扩大，运营依然清晰"}
-[data-page="product"] .product-scale .section-head>p{font-size:0;line-height:0}
-[data-page="product"] .product-scale .section-head>p:before{content:"随着客户、曲库和发行量增长，通过多客户管理、批量处理和标准化数据接入，减少重复操作，让团队在更大业务规模下保持稳定运营。";font-size:15px;line-height:1.8}
 [data-page="product"] .product-scale .scale-layout{grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);gap:16px;padding:18px;background:#f8faff}
 [data-page="product"] .product-scale .scale-clients{gap:8px;padding:6px}
 [data-page="product"] .product-scale .scale-client{padding:14px 15px}
 [data-page="product"] .product-scale .scale-client:last-child{border-style:dashed;background:#f9fbff}
 [data-page="product"] .product-scale .scale-capabilities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:6px;border-left:0}
 [data-page="product"] .product-scale .scale-capabilities>div{display:block;min-height:170px;padding:20px;border:1px solid #dfe5ee;border-radius:14px;background:#fff}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(2),[data-page="product"] .product-scale .scale-capabilities>div:nth-child(3){display:none}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(4){order:1}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(1){order:2}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(5){order:3}
-[data-page="product"] .product-scale .scale-capabilities>div b{display:block;margin-bottom:10px;font-size:0}
-[data-page="product"] .product-scale .scale-capabilities>div span{display:block;font-size:0;line-height:0}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(4) b:before{content:"多客户统一运营";font-size:13px}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(4) span:before{content:"不同 CP、厂牌和版权客户独立管理，团队统一处理。";font-size:11px;line-height:1.65}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(1) b:before{content:"大规模曲库批量处理";font-size:13px}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(1) span:before{content:"支持历史曲库迁移，以及内容、文件和发行资料批量导入与处理。";font-size:11px;line-height:1.65}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(5) b:before{content:"连接现有业务流程";font-size:13px}
-[data-page="product"] .product-scale .scale-capabilities>div:nth-child(5) span:before{content:"通过 API、SFTP、XML 或 DDEX 接入已有产品与数据流程。";font-size:11px;line-height:1.65}
-[data-page="product"] .product-scale .scale-capabilities .text-link{grid-column:1/-1;order:4;margin:4px 0 0 2px}
+[data-page="product"] .product-scale .scale-capabilities .text-link{grid-column:1/-1;margin:4px 0 0 2px}
 
 [data-page="product"] .product-launch{padding-top:68px;padding-bottom:72px}
 [data-page="product"] .product-launch .section-head{max-width:780px;margin-bottom:26px}
-[data-page="product"] .product-launch .section-head h2{font-size:0;line-height:0}
-[data-page="product"] .product-launch .section-head h2:before{content:"从配置到正式运营，按步骤完成上线";font-size:44px;line-height:1.12}
-[data-page="product"] .product-launch .section-head>p{font-size:0;line-height:0}
-[data-page="product"] .product-launch .section-head>p:before{content:"新建发行平台或迁移现有业务，都可以按照清晰的上线流程完成品牌配置、业务导入、发行验证和正式运营。";font-size:15px;line-height:1.8}
 [data-page="product"] .product-launch .launch-steps{grid-template-columns:repeat(4,1fr);margin-top:8px}
 [data-page="product"] .product-launch .launch-steps article{padding-top:22px;padding-right:28px}
-[data-page="product"] .product-launch .launch-steps article:nth-child(5){display:none}
-[data-page="product"] .product-launch .launch-steps article:nth-child(2) h3,[data-page="product"] .product-launch .launch-steps article:nth-child(3) h3,[data-page="product"] .product-launch .launch-steps article:nth-child(4) h3{font-size:0}
-[data-page="product"] .product-launch .launch-steps article:nth-child(2) p,[data-page="product"] .product-launch .launch-steps article:nth-child(3) p,[data-page="product"] .product-launch .launch-steps article:nth-child(4) p{font-size:0;line-height:0}
-[data-page="product"] .product-launch .launch-steps article:nth-child(2) h3:before{content:"导入业务";font-size:15px}
-[data-page="product"] .product-launch .launch-steps article:nth-child(2) p:before{content:"建立客户与团队，导入已有曲库。";font-size:10px;line-height:1.65}
-[data-page="product"] .product-launch .launch-steps article:nth-child(3) h3:before{content:"完成发行验证";font-size:15px}
-[data-page="product"] .product-launch .launch-steps article:nth-child(3) p:before{content:"验证内容审核、渠道提交和上线流程。";font-size:10px;line-height:1.65}
-[data-page="product"] .product-launch .launch-steps article:nth-child(4) h3:before{content:"正式运营";font-size:15px}
-[data-page="product"] .product-launch .launch-steps article:nth-child(4) p:before{content:"客户开始提交内容，团队进入日常发行运营。";font-size:10px;line-height:1.65}
 
 [data-page="product"] .product-final{padding-top:76px;padding-bottom:90px}
 [data-page="product"] .product-final-panel{padding-top:48px;padding-bottom:48px}
-[data-page="product"] .product-final-panel .eyebrow{font-size:0}
-[data-page="product"] .product-final-panel .eyebrow:before{content:"GET STARTED";font-size:10px}
-[data-page="product"] .product-final-panel h2{font-size:0;line-height:0}
-[data-page="product"] .product-final-panel h2:before{content:"搭建自有品牌音乐发行平台";font-size:43px;line-height:1.12}
-[data-page="product"] .product-final-panel p{font-size:0;line-height:0}
-[data-page="product"] .product-final-panel p:before{content:"覆盖客户入口、曲库管理、发行运营、渠道上线和 CP 分账结算，建立可持续运营的企业发行能力。";font-size:14px;line-height:1.75}
 
 @media(max-width:1050px){
   [data-page="product"] .product-scale .scale-layout{grid-template-columns:1fr}
@@ -186,3 +151,17 @@
   [data-page="solutions"] .fit-card{padding:22px}
   [data-page="solutions"] .refined-timeline article{min-height:0}
 }
+[data-page="product"] .product-scale .scale-capabilities>div b{display:block;margin-bottom:10px;font-size:13px}
+[data-page="product"] .product-scale .scale-capabilities>div span{display:block;color:#748095;font-size:11px;line-height:1.65}
+
+/* Enterprise system cleanup: shared interaction and navigation rules */
+[data-page="product"] .product-subnav{top:72px}
+[data-page="product"] .section[id]{scroll-margin-top:128px}
+[data-page="product"] .product-subnav a,[data-page="api"] .api-subnav a{border-bottom:2px solid transparent}
+[data-page="product"] .product-subnav a.active,[data-page="api"] .api-subnav a.active{color:#2149d8;border-bottom-color:#315ff4}
+.dev-mobile-nav{display:none}
+.dev-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-legal{display:flex;gap:18px}.footer-legal a{color:#8d98a8}.footer-legal a:hover{color:#fff}
+@media(max-width:820px){[data-page="product"] .product-subnav{top:64px}[data-page="product"] .section[id]{scroll-margin-top:116px}.dev-mobile-nav{display:flex;position:sticky;top:64px;z-index:30;width:100%;align-items:center;justify-content:space-between;padding:13px 20px;border:0;border-bottom:1px solid #e5e9f0;background:rgba(255,255,255,.97);color:#26334b;font-size:12px;font-weight:800;backdrop-filter:blur(14px)}.dev-mobile-nav b{font-size:16px}.dev-side{display:none!important}.dev-side.open{display:flex!important;position:sticky;top:108px;z-index:29;height:auto;max-height:calc(100vh - 108px);background:#fff}.footer-bottom{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){[data-page="product"] .product-subnav{top:64px}.footer-legal{flex-wrap:wrap}}
