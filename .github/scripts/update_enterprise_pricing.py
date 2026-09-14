@@ -1,0 +1,226 @@
+from pathlib import Path
+import re
+
+index_path = Path('03-enterprise/prototype-v4/index.html')
+styles_path = Path('03-enterprise/prototype-v4/styles.css')
+readme_path = Path('03-enterprise/README.md')
+
+html = index_path.read_text()
+start = html.index('<section class="page" data-page="pricing">')
+end = html.index('<section class="page api-page" data-page="api">')
+
+pricing = r'''<section class="page" data-page="pricing">
+  <section class="subhero pricing-hero"><div class="container reveal"><span class="eyebrow">PRICING</span><h1>按业务规模与系统需求，<br>选择企业发行版本</h1><p>三个版本共享完整发行主流程，差异集中在业务容量、多客户运营、分账结算、批量与系统集成，以及实施与服务等级。</p></div></section>
+
+  <section class="section"><div class="container"><div class="pricing-cards reveal"><article><span>基础版</span><h2>¥12,800<small>/年</small></h2><p>适合业务起步阶段，以标准流程运营有限曲库和合作客户，不涉及复杂分账与深度系统集成。</p><ul><li>1,000 首曲库 · 50 个合作客户</li><li>企业品牌与客户发行门户</li><li>曲库、发行、状态与数据报表</li><li>页面 / Excel 批量导入</li><li>标准客户与技术支持</li></ul><a class="btn btn-secondary" href="/enterprise/apply?plan=basic" data-route>申请基础版</a></article><article class="featured"><em>推荐</em><span>专业版</span><h2>¥59,800<small>/年</small></h2><p>适合长期经营多客户发行业务，需要独立品牌、合作方分账、批量处理与企业级数据交换的发行机构。</p><ul><li>5 万首曲库 · 1,000 个合作客户</li><li>独立域名与完整自有品牌</li><li>合作方分账与结算</li><li>SFTP / XML 批量数据与文件对接</li><li>优先支持与首次实施培训</li></ul><a class="btn btn-primary" href="/enterprise/apply?plan=professional" data-route>申请专业版</a></article><article><span>企业版</span><h2>¥129,800<small>/年起</small></h2><p>适合大型发行商、平台型企业及复杂供应链接入，提供更大容量、API、行业标准接入和项目制实施保障。</p><ul><li>30 万首曲库起 · 客户规模按项目配置</li><li>发行 API 标准包含</li><li>SFTP / XML / DDEX 高级接入</li><li>大型历史曲库迁移与项目实施</li><li>专属客户经理、技术支持与 SLA</li></ul><a class="btn btn-secondary" href="/enterprise/apply?plan=enterprise" data-route>联系商务</a></article></div><div class="usage-banner reveal"><div><b>发行使用费：¥1 / 首 / 渠道</b><span>按照实际目标平台计算发行使用量；同一首歌曲发行至一个目标平台计 1 次。</span></div><p>计费示例：10 首歌曲发行至 6 个目标平台，共计 60 次发行使用量，发行使用费为 ¥60。</p></div><div class="plan-common reveal"><div><span class="eyebrow">INCLUDED IN EVERY PLAN</span><h3>所有版本均包含核心发行能力</h3></div><div class="plan-common-items"><span>曲库与文件管理</span><span>客户发行门户</span><span>数字发行与状态跟踪</span><span>数据与收入报表</span><span>更新 / 重传 / 下架</span><span>页面 / Excel 批量导入</span></div></div></div></section>
+
+  <section class="section soft plan-matrix-section"><div class="container"><div class="section-head reveal"><span class="eyebrow">COMPARE PLANS</span><h2>版本权益与服务范围</h2><p>核心发行能力不做人为拆分，版本差异主要体现为容量、多客户经营能力、分账、系统集成深度与服务等级。</p></div><p class="compare-hint">横向滑动查看完整版本对比</p><div class="mobile-plan-compare reveal" data-plan-compare><div class="mobile-plan-tabs" role="tablist" aria-label="版本对比"><button type="button" data-plan-tab="basic">基础版</button><button class="active" type="button" data-plan-tab="pro">专业版</button><button type="button" data-plan-tab="enterprise">企业版</button></div><div class="mobile-plan-panel" data-plan-panel="basic"><div><span>曲库规模</span><b>1,000 首</b></div><div><span>合作客户</span><b>50 个</b></div><div><span>独立域名</span><b>—</b></div><div><span>合作方分账</span><b>—</b></div><div><span>SFTP / XML</span><b>—</b></div><div><span>DDEX</span><b>—</b></div><div><span>发行 API</span><b>可增购</b></div><div><span>曲库迁移</span><b>可选服务</b></div><div><span>客户支持</span><b>标准支持</b></div><div><span>上线支持</span><b>标准上线指引</b></div></div><div class="mobile-plan-panel active" data-plan-panel="pro"><div><span>曲库规模</span><b>5 万首</b></div><div><span>合作客户</span><b>1,000 个</b></div><div><span>独立域名</span><b>✓</b></div><div><span>合作方分账</span><b>✓</b></div><div><span>SFTP / XML</span><b>✓</b></div><div><span>DDEX</span><b>—</b></div><div><span>发行 API</span><b>可增购</b></div><div><span>曲库迁移</span><b>可选服务</b></div><div><span>客户支持</span><b>优先支持</b></div><div><span>上线支持</span><b>首次实施培训</b></div></div><div class="mobile-plan-panel" data-plan-panel="enterprise"><div><span>曲库规模</span><b>30 万首起</b></div><div><span>合作客户</span><b>按项目配置</b></div><div><span>独立域名</span><b>✓</b></div><div><span>合作方分账</span><b>✓</b></div><div><span>SFTP / XML</span><b>✓</b></div><div><span>DDEX</span><b>✓</b></div><div><span>发行 API</span><b>包含</b></div><div><span>曲库迁移</span><b>项目制实施</b></div><div><span>客户支持</span><b>专属客户经理</b></div><div><span>上线支持</span><b>项目制实施 / 定制培训</b></div></div></div><div class="compare plan-compare reveal"><div class="row head"><b>对比项目</b><b>基础版</b><b>专业版</b><b>企业版</b></div><div class="group">业务容量</div><div class="row"><span>主要适用阶段</span><span>小规模发行运营</span><span>规模化多客户发行</span><span>大型发行或平台级业务</span></div><div class="row"><span>曲库规模</span><span>1,000 首</span><span>5 万首</span><span>30 万首起</span></div><div class="row"><span>合作客户</span><span>50 个</span><span>1,000 个</span><span>按项目配置</span></div><div class="group">品牌、曲库与客户运营</div><div class="row"><span>企业品牌与 Logo</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>企业管理后台 + 客户发行门户</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>艺人 / 厂牌 / 专辑 / 歌曲 / 文件管理</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>合作客户与团队管理</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>独立域名</span><span>—</span><span>✓</span><span>✓</span></div><div class="row"><span>页面 / Excel 批量导入</span><span>✓</span><span>✓</span><span>✓</span></div><div class="group">发行与持续运营</div><div class="row"><span>国内外音乐平台发行</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>发行资料校验与合规检查</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>发行状态与异常跟踪</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>更新 / 重传 / 下架</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>批量发行与批量任务</span><span>标准批量</span><span>高级批量</span><span>高级批量 / API 自动化</span></div><div class="group">数据、收入与结算</div><div class="row"><span>平台数据与收入报表</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>收入与提现管理</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>合作方分账与结算</span><span>—</span><span>✓</span><span>✓</span></div><div class="row"><span>报表导出</span><span>✓</span><span>✓</span><span>✓</span></div><div class="group">批量处理与系统集成</div><div class="row"><span>Excel 数据交换</span><span>✓</span><span>✓</span><span>✓</span></div><div class="row"><span>SFTP 文件 / 数据交换</span><span>—</span><span>✓</span><span>✓</span></div><div class="row"><span>XML 结构化数据交换</span><span>—</span><span>✓</span><span>✓</span></div><div class="row"><span>DDEX 行业标准接入</span><span>—</span><span>—</span><span>✓</span></div><div class="row"><span>发行 API</span><span>可增购</span><span>可增购</span><span>包含</span></div><div class="row"><span>Webhook / API 日志</span><span>随 API</span><span>随 API</span><span>✓</span></div><div class="group">实施与服务</div><div class="row"><span>历史曲库迁移</span><span>可选服务</span><span>可选服务</span><span>项目制实施</span></div><div class="row"><span>客户支持</span><span>标准支持</span><span>优先支持</span><span>专属客户经理</span></div><div class="row"><span>上线与培训</span><span>标准上线指引</span><span>首次实施培训</span><span>项目制实施 / 定制培训</span></div><div class="row"><span>技术支持</span><span>标准技术支持</span><span>优先技术支持</span><span>专属技术支持 / SLA</span></div></div></div></section>
+
+  <section class="section"><div class="container"><div class="section-head split reveal"><div><span class="eyebrow">OPTIONAL SERVICES</span><h2>按项目需求扩展实施与集成服务</h2></div><p>对于历史曲库迁移、复杂系统集成和大型项目上线，可在标准版本基础上增加专项实施与技术服务。</p></div><div class="option-grid reveal"><article><h3>历史曲库迁移</h3><p>根据现有曲库结构，完成字段映射、数据整理、文件迁移与上线验证。</p></article><article><h3>高级系统集成</h3><p>提供 API、SFTP、XML、DDEX 等接入方式的方案设计、联调与验收支持。</p></article><article><h3>专属实施与服务保障</h3><p>面向大型或复杂项目提供实施计划、培训、技术支持与约定服务等级。</p></article></div><div class="api-price-card reveal"><div><span>仅需将发行能力接入现有系统</span><h2>发行 API · ¥9,800<small>/年起</small> + ¥1<small>/首/渠道</small></h2><p>面向已有网站、App 或内部业务系统，希望保留现有产品体验并直接接入音乐发行能力的企业。</p></div><ul><li>发行 API 接入权限</li><li>内容与发行核心接口</li><li>测试环境与联调支持</li><li>按实际发行使用量计费</li></ul><a class="btn btn-primary" href="/enterprise/apply?solution=api" data-route>申请 API 接入</a></div></div></section>
+
+  <section class="section soft"><div class="container"><div class="section-head reveal"><span class="eyebrow">FAQ</span><h2>计费与版本说明</h2></div><div class="faq reveal"><details open><summary>三个版本是否都包含完整发行流程？</summary><p>是。三个版本均包含曲库管理、客户发行门户、发行提交、渠道状态、数据与收入报表等核心流程。版本差异主要来自容量、多客户分账、批量与系统集成方式，以及实施和服务等级。</p></details><details><summary>年费与发行使用费如何计算？</summary><p>年费对应企业发行平台、版本容量、产品能力及服务等级；发行使用费按照实际发行量计算，同一首歌曲发行至一个目标平台计 1 次使用量。</p></details><details><summary>基础版和专业版是否支持发行 API？</summary><p>基础版与专业版可根据项目需求增购发行 API；企业版标准方案已包含发行 API。</p></details><details><summary>超出当前版本的曲库或客户额度如何处理？</summary><p>可升级至更高版本；大型曲库、超大客户规模、复杂历史数据和迁移项目可根据实际业务范围制定企业方案。</p></details><details><summary>历史曲库迁移和高级系统集成是否包含在年费内？</summary><p>基础版与专业版按项目作为可选服务评估；企业版会在方案阶段结合迁移规模、数据复杂度和集成范围确定实施内容与最终报价。</p></details></div></div></section>
+
+  <section class="enterprise-contact-cta"><div class="container"><div class="enterprise-contact-panel reveal"><div><span class="eyebrow light">CONTACT SALES</span><h2>获取适配业务需求的企业发行方案</h2><p>提交基本业务信息，结合曲库规模、客户协作方式与系统集成需求，评估适合的产品版本、发行 API 或组合方案。</p></div><div class="enterprise-contact-actions"><a class="btn btn-white btn-lg" href="/enterprise/apply" data-route>申请企业方案</a></div></div></div></section>
+</section>
+'''
+
+html = html[:start] + pricing + '\n\n' + html[end:]
+index_path.write_text(html)
+
+css = styles_path.read_text()
+css = re.sub(r'/\* Pricing visual scale \*/.*?(?=/\* API developer visuals \*/)', '', css, flags=re.S)
+marker = '/* Enterprise pricing plan matrix v2 */'
+if marker in css:
+    css = css[:css.index(marker)].rstrip() + '\n'
+css += r'''
+
+/* Enterprise pricing plan matrix v2 */
+[data-page="pricing"] .pricing-cards article{display:flex;flex-direction:column}
+[data-page="pricing"] .pricing-cards article>p{min-height:72px}
+[data-page="pricing"] .pricing-cards article>ul{flex:1}
+.plan-common{display:grid;grid-template-columns:minmax(250px,.7fr) minmax(0,1.3fr);gap:34px;align-items:center;margin-top:22px;padding:24px 28px;border:1px solid #dfe5ef;border-radius:18px;background:linear-gradient(135deg,#fafbff,#fff)}
+.plan-common h3{margin:7px 0 0;color:#253149;font-size:20px;letter-spacing:-.02em}
+.plan-common-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.plan-common-items span{display:flex;align-items:center;min-height:42px;padding:9px 11px;border:1px solid #e4e9f1;border-radius:10px;background:#fff;color:#59677d;font-size:10px;font-weight:700;line-height:1.45}
+.plan-common-items span:before{content:"✓";margin-right:7px;color:#315ff4;font-weight:900}
+.plan-matrix-section{padding-top:86px}
+.plan-compare .group{position:sticky;left:0;background:#f2f5fa;color:#4f6079}
+.plan-compare .row>span:first-child{font-weight:700;color:#445269}
+.plan-compare .row>span:not(:first-child){color:#667389}
+.plan-compare .row:hover>span{background:#fbfcff}
+@media(max-width:900px){.plan-common{grid-template-columns:1fr}.plan-common-items{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.plan-common{padding:21px 18px}.plan-common-items{grid-template-columns:1fr}.plan-common-items span{min-height:0}.plan-matrix-section{padding-top:68px}}
+'''
+styles_path.write_text(css)
+
+readme = readme_path.read_text()
+rs = readme.index('## 6. 正式版本与价格')
+re_ = readme.index('## 7. 企业商业生命周期')
+plan_doc = r'''## 6. 正式 Plan、版本与价格
+
+### 6.1 Plan 设计原则
+
+企业版 Plan 不通过拆掉核心发行流程制造版本差异。三个版本均应具备完整的曲库、客户门户、发行、状态、数据与收入主链路，差异集中在五个维度：
+
+1. **业务容量**：曲库规模与合作客户规模；
+2. **企业运营能力**：独立域名、多客户经营与合作方分账；
+3. **批量与系统集成**：Excel、SFTP、XML、DDEX 与发行 API；
+4. **实施复杂度**：历史迁移、深度联调与项目制实施；
+5. **服务等级**：标准支持、优先支持、专属客户经理与 SLA。
+
+历史音乐资产管理 SaaS 报价中的资产管理、资产导入、数字发行、合规检测、版税报表、收入管理、单/多用户分账、建站、客户支持和培训支持继续作为企业版权益设计参考，但只吸收与企业发行产品边界一致的能力，不把歌单、版权法律服务等非核心模块强行塞入当前 Plan。
+
+### 6.2 自有品牌发行平台价格
+
+| 版本 | 年费 | 曲库规模 | 合作客户 | 主要适用阶段 |
+| --- | ---: | ---: | ---: | --- |
+| 基础版 | ¥12,800 / 年 | 1,000 首 | 50 个 | 小规模发行运营 |
+| 专业版 | ¥59,800 / 年 | 5 万首 | 1,000 个 | 规模化多客户发行 |
+| 企业版 | ¥129,800 / 年起 | 30 万首起 | 按项目配置 | 大型发行或平台级业务 |
+
+三个版本统一收取：
+
+**发行使用费：¥1 / 首 / 渠道**
+
+一首歌曲发行至一个目标渠道计 1 次发行使用量。
+
+### 6.3 Plan 权益矩阵
+
+| 能力 | 基础版 | 专业版 | 企业版 |
+| --- | --- | --- | --- |
+| **业务容量** |  |  |  |
+| 曲库规模 | 1,000 首 | 5 万首 | 30 万首起 |
+| 合作客户 | 50 个 | 1,000 个 | 按项目配置 |
+| **品牌、曲库与客户运营** |  |  |  |
+| 企业品牌与 Logo | ✓ | ✓ | ✓ |
+| 企业管理后台 + 客户发行门户 | ✓ | ✓ | ✓ |
+| 艺人 / 厂牌 / 专辑 / 歌曲 / 文件管理 | ✓ | ✓ | ✓ |
+| 合作客户与团队管理 | ✓ | ✓ | ✓ |
+| 独立域名 | — | ✓ | ✓ |
+| 页面 / Excel 批量导入 | ✓ | ✓ | ✓ |
+| **发行与持续运营** |  |  |  |
+| 国内外音乐平台发行 | ✓ | ✓ | ✓ |
+| 发行资料校验与合规检查 | ✓ | ✓ | ✓ |
+| 发行状态与异常跟踪 | ✓ | ✓ | ✓ |
+| 更新 / 重传 / 下架 | ✓ | ✓ | ✓ |
+| 批量发行与批量任务 | 标准批量 | 高级批量 | 高级批量 / API 自动化 |
+| **数据、收入与结算** |  |  |  |
+| 平台数据与收入报表 | ✓ | ✓ | ✓ |
+| 收入与提现管理 | ✓ | ✓ | ✓ |
+| 合作方分账与结算 | — | ✓ | ✓ |
+| 报表导出 | ✓ | ✓ | ✓ |
+| **批量处理与系统集成** |  |  |  |
+| Excel 数据交换 | ✓ | ✓ | ✓ |
+| SFTP 文件 / 数据交换 | — | ✓ | ✓ |
+| XML 结构化数据交换 | — | ✓ | ✓ |
+| DDEX 行业标准接入 | — | — | ✓ |
+| 发行 API | 可增购 | 可增购 | 包含 |
+| Webhook / API 日志 | 随 API | 随 API | ✓ |
+| **实施与服务** |  |  |  |
+| 历史曲库迁移 | 可选服务 | 可选服务 | 项目制实施 |
+| 客户支持 | 标准支持 | 优先支持 | 专属客户经理 |
+| 上线与培训 | 标准上线指引 | 首次实施培训 | 项目制实施 / 定制培训 |
+| 技术支持 | 标准技术支持 | 优先技术支持 | 专属技术支持 / SLA |
+
+### 6.4 Plan Entitlement 基线
+
+后续系统实现以 Entitlement 而不是页面文案作为版本判断依据。第一版建议至少固化以下字段：
+
+```text
+catalog_limit
+client_limit
+custom_domain
+distribution_core
+revenue_reporting
+partner_split
+excel_import
+sftp_access
+xml_access
+ddex_access
+distribution_api
+webhook_and_api_logs
+migration_service
+support_level
+onboarding_level
+sla_level
+```
+
+取值基线：
+
+```text
+Basic
+- catalog_limit: 1000
+- client_limit: 50
+- custom_domain: false
+- partner_split: false
+- sftp_access: false
+- xml_access: false
+- ddex_access: false
+- distribution_api: addon
+- support_level: standard
+- onboarding_level: guide
+- sla_level: standard
+
+Professional
+- catalog_limit: 50000
+- client_limit: 1000
+- custom_domain: true
+- partner_split: true
+- sftp_access: true
+- xml_access: true
+- ddex_access: false
+- distribution_api: addon
+- support_level: priority
+- onboarding_level: first_implementation_training
+- sla_level: priority
+
+Enterprise
+- catalog_limit: 300000+
+- client_limit: project_based
+- custom_domain: true
+- partner_split: true
+- sftp_access: true
+- xml_access: true
+- ddex_access: true
+- distribution_api: included
+- support_level: dedicated_manager
+- onboarding_level: project_implementation
+- sla_level: contracted_sla
+```
+
+`distribution_core`、`revenue_reporting`、`excel_import` 三个版本均为开启状态。
+
+### 6.5 独立发行 API
+
+**¥9,800 / 年起 + ¥1 / 首 / 渠道**
+
+独立 API 方案面向只需要系统接入能力的企业，不默认包含完整客户发行门户和企业发行平台交付。
+
+### 6.6 可选实施与集成
+
+以下内容根据项目范围单独评估：
+
+- 历史曲库迁移
+- 复杂字段映射与数据整理
+- API 深度集成
+- SFTP / XML / DDEX 对接
+- 大型项目实施
+- 专属 SLA 与技术服务
+
+企业版商业模型以 **年度平台服务费 + 实际发行使用量 + 必要的项目实施 / 高级服务** 为主，不以普通星球发行的版权分成作为主要收费逻辑。
+
+---
+
+'''
+readme = readme[:rs] + plan_doc + readme[re_:]
+readme_path.write_text(readme)
+
+updated = index_path.read_text()
+assert '从业务规模快速定位版本' not in updated
+assert 'pricing-scale-section' not in updated
+assert '合作方分账与结算' in updated
+assert 'DDEX 行业标准接入' in updated
+assert '所有版本均包含核心发行能力' in updated
+assert updated.count('¥12,800') >= 1 and updated.count('¥59,800') >= 1 and updated.count('¥129,800') >= 1
+assert 'Plan Entitlement 基线' in readme_path.read_text()
+print('enterprise pricing plan update validated')
