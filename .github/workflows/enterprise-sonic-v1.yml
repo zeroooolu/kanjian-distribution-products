@@ -1,0 +1,44 @@
+name: Enterprise Sonic Visual Preview
+
+on:
+  push:
+    branches:
+      - design/enterprise-sonic-v1
+    paths:
+      - '.github/scripts/apply_enterprise_sonic_v1.py'
+      - '.github/workflows/enterprise-sonic-v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: design/enterprise-sonic-v1
+          fetch-depth: 0
+
+      - name: Apply sonic visual system
+        run: python .github/scripts/apply_enterprise_sonic_v1.py
+
+      - name: Verify target files
+        run: |
+          grep -q 'Enterprise Sonic Infrastructure v1' 03-enterprise/prototype-v4/styles.css
+          grep -q 'sonic-home' 03-enterprise/prototype-v4/index.html
+          grep -q 'product-signal-rail' 03-enterprise/prototype-v4/index.html
+          grep -q 'solutions-route-hero' 03-enterprise/prototype-v4/index.html
+
+      - name: Commit preview implementation
+        run: |
+          if git diff --quiet -- 03-enterprise/prototype-v4/index.html 03-enterprise/prototype-v4/styles.css; then
+            echo 'No implementation changes to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 03-enterprise/prototype-v4/index.html 03-enterprise/prototype-v4/styles.css
+          git commit -m 'design(enterprise): introduce sonic infrastructure visual system [skip ci]'
+          git push origin HEAD:design/enterprise-sonic-v1
