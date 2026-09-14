@@ -167,9 +167,21 @@ Developer Product 应逐步具备：
 
 ---
 
-## 6. 正式版本与价格
+## 6. 正式 Plan、版本与价格
 
-### 6.1 自有品牌发行平台
+### 6.1 Plan 设计原则
+
+企业版 Plan 不通过拆掉核心发行流程制造版本差异。三个版本均应具备完整的曲库、客户门户、发行、状态、数据与收入主链路，差异集中在五个维度：
+
+1. **业务容量**：曲库规模与合作客户规模；
+2. **企业运营能力**：独立域名、多客户经营与合作方分账；
+3. **批量与系统集成**：Excel、SFTP、XML、DDEX 与发行 API；
+4. **实施复杂度**：历史迁移、深度联调与项目制实施；
+5. **服务等级**：标准支持、优先支持、专属客户经理与 SLA。
+
+历史音乐资产管理 SaaS 报价中的资产管理、资产导入、数字发行、合规检测、版税报表、收入管理、单/多用户分账、建站、客户支持和培训支持继续作为企业版权益设计参考，但只吸收与企业发行产品边界一致的能力，不把歌单、版权法律服务等非核心模块强行塞入当前 Plan。
+
+### 6.2 自有品牌发行平台价格
 
 | 版本 | 年费 | 曲库规模 | 合作客户 | 主要适用阶段 |
 | --- | ---: | ---: | ---: | --- |
@@ -183,29 +195,119 @@ Developer Product 应逐步具备：
 
 一首歌曲发行至一个目标渠道计 1 次发行使用量。
 
-### 6.2 核心版本差异
+### 6.3 Plan 权益矩阵
 
 | 能力 | 基础版 | 专业版 | 企业版 |
 | --- | --- | --- | --- |
-| 企业品牌与客户发行门户 | ✓ | ✓ | ✓ |
-| 国内外音乐平台发行 | ✓ | ✓ | ✓ |
-| 数据与收入报表 | ✓ | ✓ | ✓ |
-| Excel 批量导入 | ✓ | ✓ | ✓ |
+| **业务容量** |  |  |  |
+| 曲库规模 | 1,000 首 | 5 万首 | 30 万首起 |
+| 合作客户 | 50 个 | 1,000 个 | 按项目配置 |
+| **品牌、曲库与客户运营** |  |  |  |
+| 企业品牌与 Logo | ✓ | ✓ | ✓ |
+| 企业管理后台 + 客户发行门户 | ✓ | ✓ | ✓ |
+| 艺人 / 厂牌 / 专辑 / 歌曲 / 文件管理 | ✓ | ✓ | ✓ |
+| 合作客户与团队管理 | ✓ | ✓ | ✓ |
 | 独立域名 | — | ✓ | ✓ |
-| 多客户收入分账 | — | ✓ | ✓ |
-| SFTP / XML | — | ✓ | ✓ |
-| DDEX | — | — | ✓ |
+| 页面 / Excel 批量导入 | ✓ | ✓ | ✓ |
+| **发行与持续运营** |  |  |  |
+| 国内外音乐平台发行 | ✓ | ✓ | ✓ |
+| 发行资料校验与合规检查 | ✓ | ✓ | ✓ |
+| 发行状态与异常跟踪 | ✓ | ✓ | ✓ |
+| 更新 / 重传 / 下架 | ✓ | ✓ | ✓ |
+| 批量发行与批量任务 | 标准批量 | 高级批量 | 高级批量 / API 自动化 |
+| **数据、收入与结算** |  |  |  |
+| 平台数据与收入报表 | ✓ | ✓ | ✓ |
+| 收入与提现管理 | ✓ | ✓ | ✓ |
+| 合作方分账与结算 | — | ✓ | ✓ |
+| 报表导出 | ✓ | ✓ | ✓ |
+| **批量处理与系统集成** |  |  |  |
+| Excel 数据交换 | ✓ | ✓ | ✓ |
+| SFTP 文件 / 数据交换 | — | ✓ | ✓ |
+| XML 结构化数据交换 | — | ✓ | ✓ |
+| DDEX 行业标准接入 | — | — | ✓ |
 | 发行 API | 可增购 | 可增购 | 包含 |
-| 支持等级 | 标准支持 | 优先支持 | 专属客户经理 / 技术支持 / SLA |
-| 上线方式 | 标准上线指引 | 首次实施培训 | 项目制实施 |
+| Webhook / API 日志 | 随 API | 随 API | ✓ |
+| **实施与服务** |  |  |  |
+| 历史曲库迁移 | 可选服务 | 可选服务 | 项目制实施 |
+| 客户支持 | 标准支持 | 优先支持 | 专属客户经理 |
+| 上线与培训 | 标准上线指引 | 首次实施培训 | 项目制实施 / 定制培训 |
+| 技术支持 | 标准技术支持 | 优先技术支持 | 专属技术支持 / SLA |
 
-### 6.3 独立发行 API
+### 6.4 Plan Entitlement 基线
+
+后续系统实现以 Entitlement 而不是页面文案作为版本判断依据。第一版建议至少固化以下字段：
+
+```text
+catalog_limit
+client_limit
+custom_domain
+distribution_core
+revenue_reporting
+partner_split
+excel_import
+sftp_access
+xml_access
+ddex_access
+distribution_api
+webhook_and_api_logs
+migration_service
+support_level
+onboarding_level
+sla_level
+```
+
+取值基线：
+
+```text
+Basic
+- catalog_limit: 1000
+- client_limit: 50
+- custom_domain: false
+- partner_split: false
+- sftp_access: false
+- xml_access: false
+- ddex_access: false
+- distribution_api: addon
+- support_level: standard
+- onboarding_level: guide
+- sla_level: standard
+
+Professional
+- catalog_limit: 50000
+- client_limit: 1000
+- custom_domain: true
+- partner_split: true
+- sftp_access: true
+- xml_access: true
+- ddex_access: false
+- distribution_api: addon
+- support_level: priority
+- onboarding_level: first_implementation_training
+- sla_level: priority
+
+Enterprise
+- catalog_limit: 300000+
+- client_limit: project_based
+- custom_domain: true
+- partner_split: true
+- sftp_access: true
+- xml_access: true
+- ddex_access: true
+- distribution_api: included
+- support_level: dedicated_manager
+- onboarding_level: project_implementation
+- sla_level: contracted_sla
+```
+
+`distribution_core`、`revenue_reporting`、`excel_import` 三个版本均为开启状态。
+
+### 6.5 独立发行 API
 
 **¥9,800 / 年起 + ¥1 / 首 / 渠道**
 
 独立 API 方案面向只需要系统接入能力的企业，不默认包含完整客户发行门户和企业发行平台交付。
 
-### 6.4 可选实施与集成
+### 6.6 可选实施与集成
 
 以下内容根据项目范围单独评估：
 
