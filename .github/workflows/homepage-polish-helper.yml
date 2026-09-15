@@ -1,0 +1,21 @@
+name: Homepage Polish Helper
+on:
+  push:
+    branches: [chore/homepage-polish-helper]
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 .github/scripts/polish_enterprise_home_modules.py
+      - run: |
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 03-enterprise/prototype-v4/index.html 03-enterprise/prototype-v4/styles.css
+          git commit -m "refine(enterprise): polish homepage content modules" || exit 0
+          git push origin HEAD:chore/homepage-polish-helper
