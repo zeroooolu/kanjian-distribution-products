@@ -1,0 +1,30 @@
+name: Product Copy Rewrite Helper
+on:
+  push:
+    branches:
+      - chore/product-copy-rewrite-helper
+    paths:
+      - '.github/workflows/product-copy-rewrite-helper.yml'
+      - '.github/scripts/rewrite_product_client_catalog_copy.py'
+permissions:
+  contents: write
+jobs:
+  rewrite:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chore/product-copy-rewrite-helper
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python .github/scripts/rewrite_product_client_catalog_copy.py
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 03-enterprise/prototype-v4/index.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'refine(enterprise): rewrite client and catalog messaging'
+          git push origin HEAD:chore/product-copy-rewrite-helper
