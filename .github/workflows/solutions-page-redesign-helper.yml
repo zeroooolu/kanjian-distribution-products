@@ -1,0 +1,31 @@
+name: Solutions Page Redesign Helper
+on:
+  push:
+    branches:
+      - chore/solutions-page-redesign-helper
+    paths:
+      - '.github/scripts/redesign_solutions_page.py'
+      - '.github/workflows/solutions-page-redesign-helper.yml'
+permissions:
+  contents: write
+jobs:
+  redesign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chore/solutions-page-redesign-helper
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python .github/scripts/redesign_solutions_page.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 03-enterprise/prototype-v4/index.html 03-enterprise/prototype-v4/styles.css
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "refine(enterprise): redesign solutions decision flow"
+            git push
+          fi
