@@ -1,0 +1,41 @@
+name: Enterprise Sonic V2 Refinement
+
+on:
+  push:
+    branches:
+      - chore/enterprise-sonic-v2-helper
+    paths:
+      - '.github/scripts/apply_enterprise_sonic_v2.py'
+      - '.github/workflows/enterprise-sonic-v2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chore/enterprise-sonic-v2-helper
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply Sonic V2 refinements
+        run: python .github/scripts/apply_enterprise_sonic_v2.py
+      - name: Validate key markers
+        run: |
+          grep -q 'capability-showcase' 03-enterprise/prototype-v4/index.html
+          grep -q 'Enterprise Sonic v2 — light visual storytelling' 03-enterprise/prototype-v4/styles.css
+          grep -q 'scenario-art' 03-enterprise/prototype-v4/index.html
+      - name: Commit generated preview
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 03-enterprise/prototype-v4/index.html 03-enterprise/prototype-v4/styles.css
+          git diff --cached --quiet && exit 0
+          git commit -m 'design(enterprise): rebalance sonic preview with visual capability cards [skip ci]'
+          git push origin chore/enterprise-sonic-v2-helper
