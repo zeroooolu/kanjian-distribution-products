@@ -12,8 +12,9 @@ def git_show(ref: str, path: str) -> str:
 
 def page_span(html: str, page: str):
     marker = f'data-page="{page}"'
-    pos = html.index(marker)
-    start = html.rfind('<section class="page', 0, pos)
+    main_start = html.index('<main>')
+    pos = html.index(marker, main_start)
+    start = html.rfind('<section class="page', main_start, pos)
     if start < 0:
         raise RuntimeError(f'page start not found: {page}')
     end = html.find('\n<section class="page', pos)
