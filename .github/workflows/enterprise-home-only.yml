@@ -1,0 +1,50 @@
+name: Enterprise Homepage Only Preview
+
+on:
+  push:
+    branches:
+      - chore/enterprise-sonic-v2-helper
+    paths:
+      - '.github/scripts/make_enterprise_home_only.py'
+      - '.github/workflows/enterprise-home-only.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chore/enterprise-sonic-v2-helper
+          fetch-depth: 0
+      - name: Fetch main
+        run: git fetch origin main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore Product and Solutions; keep homepage visual
+        run: python .github/scripts/make_enterprise_home_only.py
+      - name: Validate homepage-only scope
+        run: |
+          grep -q 'capability-showcase' 03-enterprise/prototype-v4/index.html
+          grep -q 'Enterprise homepage visual experiment — homepage only' 03-enterprise/prototype-v4/styles.css
+          ! grep -q 'sonic-product-hero' <(python - <<'PY'
+          from pathlib import Path
+          s=Path('03-enterprise/prototype-v4/index.html').read_text()
+          p=s.index('data-page="product"')
+          a=s.rfind('<section class="page',0,p); b=s.find('\n<section class="page',p)
+          print(s[a:b])
+          PY
+          )
+      - name: Commit generated preview
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 03-enterprise/prototype-v4/index.html 03-enterprise/prototype-v4/styles.css
+          git diff --cached --quiet && exit 0
+          git commit -m 'design(enterprise): keep sonic redesign on homepage only [skip ci]'
+          git push origin chore/enterprise-sonic-v2-helper
